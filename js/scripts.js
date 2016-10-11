@@ -3,6 +3,10 @@ function Contact(first, last) {
   this.lastName = last;
 }
 
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+}
+
 $(document).ready(function() {
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
@@ -15,7 +19,7 @@ $(document).ready(function() {
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
     // This line adds a contact to the list.
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
+    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
     //Resets the value to a blank string.
     $("input#new-first-name").val("");
